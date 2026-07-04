@@ -21,21 +21,6 @@ GROUP BY customer_id;
 
 -- 3. What was the first item from the menu purchased by each customer?
 
--- WITH first_order AS (
---     SELECT
---         customer_id,
---         MIN(order_date) AS first_date
---     FROM sales
---     GROUP BY customer_id
--- )
--- SELECT s.customer_id,
--- f.first_date,
--- m.product_name 
--- FROM sales as s
--- JOIN first_order as f on s.customer_id = f.customer_id
--- AND s.order_date = f.first_date
--- JOIN menu as m on s.product_id = m.product_id
-
 WITH ranked_sales AS (
     SELECT 
         customer_id,
